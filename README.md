@@ -1,4 +1,4 @@
-# ÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ LeetCode Solutions Repository
+# ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ LeetCode Solutions Repository
 
 > This repository contains my structured solutions to various LeetCode problems, written in `C++` and `Java`, along with fundamental concepts and practice in Databases (SQL).
 
@@ -42,4 +42,12 @@
 |  |
 | ------- |
 | [3870-minimum-moves-to-clean-the-classroom](https://github.com/MoHAMDY93/Problem-Solving/tree/master/3870-minimum-moves-to-clean-the-classroom) |
+## String
+|  |
+| ------- |
+| [0115-distinct-subsequences](https://github.com/MoHAMDY93/Problem-Solving/tree/master/0115-distinct-subsequences) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0115-distinct-subsequences](https://github.com/MoHAMDY93/Problem-Solving/tree/master/0115-distinct-subsequences) |
 <!---LeetCode Topics End-->
