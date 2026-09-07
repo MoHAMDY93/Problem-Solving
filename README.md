@@ -1,4 +1,4 @@
-# ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ LeetCode Solutions Repository
+# ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ LeetCode Solutions Repository
 
 > This repository contains my structured solutions to various LeetCode problems, written in `C++` and `Java`, along with fundamental concepts and practice in Databases (SQL).
 
@@ -46,8 +46,10 @@
 |  |
 | ------- |
 | [0115-distinct-subsequences](https://github.com/MoHAMDY93/Problem-Solving/tree/master/0115-distinct-subsequences) |
+| [0977-distinct-subsequences-ii](https://github.com/MoHAMDY93/Problem-Solving/tree/master/0977-distinct-subsequences-ii) |
 ## Dynamic Programming
 |  |
 | ------- |
 | [0115-distinct-subsequences](https://github.com/MoHAMDY93/Problem-Solving/tree/master/0115-distinct-subsequences) |
+| [0977-distinct-subsequences-ii](https://github.com/MoHAMDY93/Problem-Solving/tree/master/0977-distinct-subsequences-ii) |
 <!---LeetCode Topics End-->
