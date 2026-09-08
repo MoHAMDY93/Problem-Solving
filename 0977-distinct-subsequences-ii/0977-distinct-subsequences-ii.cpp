@@ -1,13 +1,11 @@
 class Solution {
 public:
     int distinctSubseqII(string s) {
-        long long dp = 1 , MOD = 1e9 + 7;
-        int last[26] = {};
+        long long last[26] = {};
+        const int MOD = 1e9 + 7;
         for (char c : s) {
-            int new_dp = (dp * 2 - last[c - 'a'] + MOD) % MOD;
-            last[c - 'a'] = dp;
-            dp = new_dp;
+            last[c - 'a'] = accumulate(begin(last) , end(last) , 1LL) % MOD;
         }
-        return (dp - 1 + MOD) % MOD;
+        return accumulate(begin(last) , end(last) , 0LL) % MOD;
     }
 };
