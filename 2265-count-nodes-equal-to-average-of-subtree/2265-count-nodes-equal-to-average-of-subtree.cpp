@@ -16,16 +16,13 @@ public:
         // retunr the count of the nodes in the subtree and sum of theor values
         auto dfs = [&](this auto&& dfs, TreeNode* root) -> pair<int , int> {
             if (!root) return {0 , 0};
-            if (!root->left && !root->right) {
-                ans++;
-                return {1 , root->val};
-            }
-            auto left_contr = dfs(root->left);
-            auto right_contr = dfs(root->right);
-            auto total = make_pair(left_contr.first + right_contr.first + 1 , left_contr.second + right_contr.second + root->val);
+            auto [left_count , left_sum] = dfs(root->left);
+            auto [right_count , right_sum] = dfs(root->right);
+            int count = left_count + right_count + 1;
+            int sum = left_sum + right_sum + root->val;
             // cout << root->val << ' ' << total.first << ' ' << total.second << '\n';
-            ans += ((total.second / total.first) == root->val);
-            return total;
+            ans += ((sum / count) == root->val);
+            return {count , sum};
         };
         dfs(root);
         return ans;
