@@ -9,11 +9,11 @@ public:
                 if (img2[i][j] == 1) ones_2.emplace_back(i , j);
             }
         }
-        map<pair<int , int> , int> shift;
+        vector<vector<int>> shift(2 * n, vector<int>(2 * n, 0));
         int ans = 0;
         for (auto [x1 , y1] : ones_1) {
             for (auto [x2 , y2] : ones_2) {
-                ans = max(ans , ++shift[{x1 - x2 , y1 - y2}]);
+                ans = max(ans , ++shift[x1 - x2 + n][y1 - y2 + n]);
             }
         }
         return ans;
