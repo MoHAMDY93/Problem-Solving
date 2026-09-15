@@ -65,7 +65,7 @@ public:
             // add the current character to the curr string
             ret = dp(idx+1 , start);
             // skip and start a new string
-            ret = max(ret , dp(idx+1 , idx+1));
+            ret = max(ret , dp(idx+1 , idx));
             // if the curr string is valid -> [sz >= k && isPlaindrome(curr) = true], then maximize between those two paths
             int sz = idx - start + 1;
             if (sz >= k && isPalindrome(start , idx , p)) ret = max(ret , 1 + dp(idx+1 , idx+1));
