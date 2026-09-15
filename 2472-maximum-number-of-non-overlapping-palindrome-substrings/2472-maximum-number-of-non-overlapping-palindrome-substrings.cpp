@@ -55,24 +55,22 @@ public:
         /*
             dp[idx][start] -> size = idx - start + 1 , boolean palindrome = isPalindrome(start , idx)
         */
-        vector<vector<int>> memo(n , vector<int> (n , -1));
-        auto dp = [&](this auto&& dp , int idx , int start) -> int {
+        vector<int> memo(n , -1);
+        auto dp = [&](this auto&& dp , int idx) -> int {
             // reached the end
             if (idx == n) return 0;
-            auto &ret = memo[idx][start];
+            auto &ret = memo[idx];
             if (~ret) return ret;
-
-            // add the current character to the curr string
-            ret = dp(idx+1 , start);
-            // skip and start a new string
-            ret = max(ret , dp(idx+1 , idx));
-            // if the curr string is valid -> [sz >= k && isPlaindrome(curr) = true], then maximize between those two paths
-            int sz = idx - start + 1;
-            if (sz >= k && isPalindrome(start , idx , p)) ret = max(ret , 1 + dp(idx+1 , idx+1));
-
+            // skipp the current char
+            ret = dp(idx+1);
+            // try every coming palindrome
+            for (int j = idx ; j<n ; j++) {
+                if (j - idx + 1 >= k && isPalindrome(idx , j , p)) ret = max(ret , 1 + dp(j+1));
+            }
+            
             return ret; 
         };
 
-        return dp(0 , 0);
+        return dp(0);
     }
 };
