@@ -1,42 +1,46 @@
 class Solution {
 public:
     vector<string> removeInvalidParentheses(string s) {
-        int n = s.size();
-        vector<string> total;
-        string curr;
-        auto get = [&](this auto&& get , int i , int open) -> void {
-            if (i == n) {
-                if (open == 0) total.push_back(curr);
-                return; 
+        auto valid = [&](string& ss) -> bool {
+            int bal = 0;
+            for (auto c : ss) {
+                if (c == '(') bal++;
+                else if (c == ')') {
+                    bal--;
+                    if (bal < 0) return false;
+                }
             }
-            // skip
-            if (s[i] == '(' || s[i] == ')')
-                get(i+1 , open);
-            
-            // take
-            if (s[i] == '(') {
-                curr.push_back(s[i]);
-                get(i+1 , open+1);
-                curr.pop_back();
-            } else if (s[i] == ')') {
-                if (!open) return;
-                curr.push_back(s[i]);
-                get(i+1 , open-1);
-                curr.pop_back();
-            } else {
-                curr.push_back(s[i]);
-                get(i+1 , open);
-                curr.pop_back();
-            }
+            return (bal == 0);
         };
-        get(0 , 0);
-        // return total;
-        int maxi = 0;
-        for (auto ss : total) maxi = max(maxi , (int)ss.size());
-        set<string> valid;
-        for (auto ss : total) {
-            if (ss.size() == maxi) valid.insert(ss);
+        queue<string> q;
+        unordered_set<string> vis;
+        bool done = false;
+        vector<string> ans; 
+
+        q.push(s);
+        vis.insert(s);
+
+        while (!q.empty()) {
+            string ss = q.front(); q.pop();
+            // cout << ss << endl;
+            if (valid(ss)) {
+                // cout << "in\n";
+                ans.push_back(ss);
+                done = true;
+                continue;
+            }
+            if (done) continue;
+            for (int i=0 ; i<ss.size() ; i++) {
+                if (ss[i] != '(' && ss[i] != ')') continue;
+                if (i > 0 && ss[i] == ss[i-1]) continue;
+                string nxt = ss.substr(0 , i) + ss.substr(i+1);
+                // cout << "nxt:: " << nxt << endl;
+                if (!vis.count(nxt)) {
+                    vis.insert(nxt);
+                    q.push(nxt);
+                }
+            }
         }
-        return vector<string> (begin(valid) , end(valid));
+        return ans;
     }
 };
