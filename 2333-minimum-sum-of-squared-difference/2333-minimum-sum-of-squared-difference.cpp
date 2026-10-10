@@ -2,36 +2,30 @@ class Solution {
 public:
     long long minSumSquareDiff(vector<int>& nums1, vector<int>& nums2, int k1, int k2) {
         int n = nums1.size();
-        long long ans = 0 , k = k1 + k2;
         int mx = 0;
+        long long k = k1 + k2;
+        // cout << k << '\n';
+        // get the max difference to bound the freq array
+        for (int i=0 ; i<n ; i++) 
+            mx = max(mx , abs(nums1[i] - nums2[i]));
+        
+        vector<long long> freq(mx + 1 , 0);
         for (int i=0 ; i<n ; i++) {
-            nums1[i] = abs(nums1[i] - nums2[i]);
-            mx = max(mx , nums1[i]);
+            int diff = abs(nums1[i] - nums2[i]);
+            freq[diff]++;
         }
-        auto check = [&](int mid) -> bool {
-            long long sum = 0;
-            for (auto num : nums1) {
-                sum += num > mid ? num - mid : 0;
-            }
-            return sum <= k;
-        };
-        int l = 0 , r = mx , best = 0;
-        while (l <= r) {
-            int mid = (l + r) >> 1;
-            if (check(mid)) best = mid , r = mid - 1;
-            else l = mid + 1;
+        // now go from the max difference to the lower one
+        // and try to lower the level to the next one
+        for (int d = mx ; d > 0 ; d--) {
+            if (freq[d] == 0) continue;
+            int take = min(k , freq[d]);
+            freq[d] -= take;
+            freq[d-1] += take;
+            k -= take;
         }
-        for (auto num : nums1) {
-            if (num > best) k -= (num - best);
-        }
-        sort(rbegin(nums1) , rend(nums1));
-        for (auto num : nums1) {
-            long long diff = best >= num ? num : best;
-            if (k && diff) {
-                diff-- , k--;
-            }
-            // cout << num << ' ' << diff << ' ' << k << '\n';
-            ans += diff * diff;
+        long long ans = 0;
+        for (long long d = mx ; d>0 ; d--) {
+            ans += d * d * freq[d];
         }
         return ans;
     }
