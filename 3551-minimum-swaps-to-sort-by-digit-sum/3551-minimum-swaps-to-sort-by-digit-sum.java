@@ -28,7 +28,7 @@ class Solution {
             arr[i] = new Element(nums[i] , i);
         }
         Arrays.sort(arr);
-        for (var e : arr) System.out.print(e.idx + " " + e.val + " " + e.digitSum + "\n");
+        // for (var e :` arr) System.out.print(e.idx + " " + e.val + " " + e.digitSum + "\n");
         int ans = 0;
         boolean[] vis = new boolean[n];
         for (int i=0 ; i<n ; i++) {
