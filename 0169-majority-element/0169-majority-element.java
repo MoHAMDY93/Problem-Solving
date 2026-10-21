@@ -1,10 +1,10 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        int cand = 0 , cnt = 0;
         for (int i : nums) {
-            freq.put(i , freq.getOrDefault(i , 0) + 1);
-            if (freq.get(i) > nums.length / 2) return i;
+            if (cnt == 0) cand = i;
+            cnt += (i == cand ? +1 : -1);
         }
-        return 0;
+        return cand;
     }
 }
