@@ -5,6 +5,6 @@ SELECT
 FROM 
     Activity
 WHERE 
-    activity_date BETWEEN '2019-07-27'::date - INTERVAL '29 days' AND '2019-07-27'
+    activity_date BETWEEN '2019-07-27'::DATE - INTERVAL '29 days' AND '2019-07-27'
 GROUP BY
-    day;
+    activity_date;
