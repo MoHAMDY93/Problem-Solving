@@ -5,7 +5,7 @@ public:
         for (int i=0 ; i<queries.size() ; i++) {
             qr_idx.emplace_back(queries[i], i);
         }
-        map<int , int> cnt;
+        unordered_map<int , int> cnt;
         sort(begin(logs) , end(logs) , [](auto& A, auto& B) {
             return A[1] < B[1];
         });
@@ -27,17 +27,5 @@ public:
             ans[idx] = (n - cnt.size());
         }
         return ans;
-        
-        // for (int i=0 ; r<logs.size() ; r++) {
-        //     if (logs[l][1] < queries[curr_qr] - x) {
-        //         if (cnt.count(logs[l][0])) cnt[logs[l][0]]--;
-        //         if (!cnt[logs[l][0]]) cnt.erase(logs[l][0]);
-        //     }
-        //     // end of the current window
-        //     if (logs[r][1] > queries[curr_qr]) {
-        //         ans.push_back(n - cnt.size());
-        //     }
-        //     if (queries[curr_qr]-x <= logs[r][1] && logs[r][1] <= queries[curr_qr]) cnt[logs[r][0]]++;
-        // }
     }
 };
