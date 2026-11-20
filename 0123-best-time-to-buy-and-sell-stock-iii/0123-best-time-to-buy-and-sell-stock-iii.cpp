@@ -1,15 +1,17 @@
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        int buy1 = INT_MIN, sell1 = 0;
-        int buy2 = INT_MIN, sell2 = 0;
-
-        for (int p : prices) {
-            buy1  = max(buy1, -p);          // Best profit after 1st buy
-            sell1 = max(sell1, buy1 + p);   // Best profit after 1st sell
-            buy2  = max(buy2, sell1 - p);   // Best profit after 2nd buy
-            sell2 = max(sell2, buy2 + p);   // Best profit after 2nd sell
-        }
-        return sell2;
+    int maxProfit(vector<int>& nums) {
+        int n = nums.size();
+        int memo[n][2][2];
+        auto dp = [&](this auto&& dp, int i, int sign, int cnt) -> int {
+            if (i == n || cnt == 2) return 0;
+            auto& ret = memo[i][sign][cnt];
+            if (~ret) return ret;
+            int profit = (sign ? nums[i] : -nums[i]);
+            ret = max(dp(i+1, sign, cnt), profit + dp(i+1, sign ^ 1, cnt + sign));
+            return ret;
+        };
+        memset(memo, -1, sizeof(memo));
+        return dp(0, 0, 0);    
     }
 };
